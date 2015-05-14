@@ -59,7 +59,7 @@ $(function() {
         /* This test ensures the menu element is
          * hidden by default based on a class name.
          */
-        it('is hidden by default', function() {
+        it('has "menu-hidden" class on body by default', function() {
         	expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
@@ -68,7 +68,7 @@ $(function() {
           * has two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        it('toggles visibility when the menu icon is clicked', function() {
+        it('toggles "menu-hidden" class on body when the menu icon is clicked', function() {
         	var menuIcon = $('.menu-icon-link');
         	expect($('body').hasClass('menu-hidden')).toBe(true);
         	// Click the menu icon.
