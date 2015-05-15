@@ -106,16 +106,33 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection"
-    describe('Initial Entries', function() {
+    */
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
+		*/
 
-        it('are defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
-        });
+		var preLoad,
+			postLoad;
+
+		beforeEach(function(done) {
+			/* Invoke the loadFeed function passing in a pointer to the
+			* first index for allFeeds and a callback function.
+			*/
+			loadFeed(0);
+			preLoad = $('.feed').html();
+
+			loadFeed(1, function() {
+				postLoad = $('.feed').html();
+				done();
+			});
+		});
+
+		it('should be different from previous selection', function(done) {
+			expect(postLoad).not.toBe(preLoad);
+			done();
+		});
     });
-	*/
 
 }());
